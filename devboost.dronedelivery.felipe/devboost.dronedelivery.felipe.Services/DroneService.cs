@@ -6,11 +6,31 @@ using devboost.dronedelivery.felipe.DTO;
 using devboost.dronedelivery.felipe.Services.Interfaces;
 using Microsoft.Data.SqlClient;
 using Dapper;
+using devboost.dronedelivery.felipe.EF.Entities;
+using devboost.dronedelivery.felipe.EF.Data;
 
 namespace devboost.dronedelivery.felipe.Services
 {
     public class DroneService : IDroneService
     {
+        private const string sqlCommand = @"select a.DroneId,
+                                         0 as Situacao,
+                                         a.Id as PedidoId 
+                                  from pedido a
+                                  where a.Situacao <> 2
+                                  and a.DataHoraFinalizacao > dateadd(hour,-3,CURRENT_TIMESTAMP)
+                                  union
+                                  select b.Id as DroneId,
+                                         1 as Situacao,
+                                         0 as PedidoId
+                                  from  Drone b
+                                  where b.Id NOT IN  (
+                                      select a.DroneId     
+                                  from pedido a
+                                  where a.Situacao <> 2
+                                  and a.DataHoraFinalizacao > dateadd(hour,-3,CURRENT_TIMESTAMP)
+                                  ) ";
+
         private readonly DataContext _context;
 
         public DroneService(DataContext context)
@@ -21,6 +41,15 @@ namespace devboost.dronedelivery.felipe.Services
         public async Task<List<Drone>> GetAll()
         {
             return _context.Drone.ToList();
+        }
+
+        public async Task<List<StatusDroneDTO>> GetDroneStatus()
+        {
+            using (SqlConnection conexao = new SqlConnection("server=localhost,11433;database=desafio-drone-db;user id=sa;password=DockerSql2017!"))
+            {
+                var resultado = await conexao.QueryAsync<StatusDroneDTO>(sqlCommand);
+                return resultado.ToList();
+            }
         }
 
         public async Task<List<DroneStatusDTO>> GetDrones()

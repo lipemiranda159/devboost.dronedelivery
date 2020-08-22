@@ -9,6 +9,7 @@ using devboost.dronedelivery.felipe.Facade.Interface;
 using devboost.dronedelivery.felipe.DTO;
 using devboost.dronedelivery.felipe.EF.Entities;
 using devboost.dronedelivery.felipe.EF.Data;
+using devboost.dronedelivery.felipe.Services.Interfaces;
 
 namespace devboost.dronedelivery.felipe.Controllers
 {
@@ -18,11 +19,12 @@ namespace devboost.dronedelivery.felipe.Controllers
     {
         private readonly DataContext _context;
         private readonly IPedidoFacade _pedidoFacade;
-
-        public DronesController(DataContext context, IPedidoFacade pedidoFacade)
+        private readonly IDroneService _droneService;
+        public DronesController(DataContext context, IPedidoFacade pedidoFacade, IDroneService droneService)
         {
             _context = context;
             _pedidoFacade = pedidoFacade;
+            _droneService = droneService;
         }
 
         [HttpPost("assign-drone")]
@@ -58,28 +60,9 @@ namespace devboost.dronedelivery.felipe.Controllers
         [HttpGet("GetStatusDrone")]        
         public async Task<ActionResult<List<StatusDroneDTO>>> GetStatusDrone()
         {
-            var sqlCommand = @"select a.DroneId,
-                                         0 as Situacao,
-                                         a.Id as PedidoId 
-                                  from pedido a
-                                  where a.Situacao <> 2
-                                  and a.DataHoraFinalizacao > dateadd(hour,-3,CURRENT_TIMESTAMP)
-                                  union
-                                  select b.Id as DroneId,
-                                         1 as Situacao,
-                                         0 as PedidoId
-                                  from  Drone b
-                                  where b.Id NOT IN  (
-                                      select a.DroneId     
-                                  from pedido a
-                                  where a.Situacao <> 2
-                                  and a.DataHoraFinalizacao > dateadd(hour,-3,CURRENT_TIMESTAMP)
-                                  ) ";
+            
 
-            using SqlConnection conexao = new SqlConnection("server=localhost,11433;database=desafio-drone-db;user id=sa;password=DockerSql2017!");
-            var resultado = await conexao.QueryAsync<StatusDroneDTO>(sqlCommand);
-
-            return Ok(resultado);
+            return Ok(await _droneService.GetDroneStatus());
         }
 
         // PUT: api/Drones/5
