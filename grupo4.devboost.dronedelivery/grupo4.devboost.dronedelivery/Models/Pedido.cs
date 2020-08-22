@@ -1,10 +1,5 @@
-﻿using GeoAPI.Geometries;
-using Geolocation;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.Spatial;
-using System.Spatial;
 
 namespace grupo4.devboost.dronedelivery.Models
 {
