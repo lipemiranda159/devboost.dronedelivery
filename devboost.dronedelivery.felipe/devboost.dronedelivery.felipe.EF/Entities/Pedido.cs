@@ -7,7 +7,6 @@ namespace devboost.dronedelivery.felipe.EF.Entities
     {
         [Key]
         public int Id { get; set; }
-        public int? DroneId { get; set; }
         public int Peso { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }

@@ -23,17 +23,42 @@ namespace devboost.dronedelivery.felipe.Facade
         }
         public async Task AssignDrone()
         {
-
-            var pedidos = await _dataContext.Pedido.Where(FiltraPedidos()).ToArrayAsync().ConfigureAwait(false);
+            var pedidos = await PegaPedidosAsync().ConfigureAwait(false);
             foreach (var pedido in pedidos)
             {
                 var drone = await _pedidoService.DroneAtendePedido(pedido);
-                pedido.Situacao = (int)StatusPedido.AGUARDANDO_ENVIO;
-                pedido.DroneId = drone.Drone.Id;
-                pedido.DataUltimaAlteracao = DateTime.Now;
-                _dataContext.Pedido.Update(pedido);
-                await _dataContext.SaveChangesAsync().ConfigureAwait(false);
+                await AtualizaPedidoAsync(pedido).ConfigureAwait(false);
+                await AdicionarPedidoDrone(pedido, drone).ConfigureAwait(false);
+
             }
+        }
+
+        private async Task AdicionarPedidoDrone(Pedido pedido, DTO.DroneDTO drone)
+        {
+            var pedidoDrone = new PedidoDrone()
+            {
+                Distancia = drone.Distancia,
+                Drone = drone.Drone,
+                DroneId = drone.Drone.Id,
+                Pedido = pedido,
+                PedidoId = pedido.Id,
+                StatusEnvio = (int)StatusEnvio.AGUARDANDO
+            };
+            _dataContext.PedidoDrones.Add(pedidoDrone);
+            await _dataContext.SaveChangesAsync().ConfigureAwait(false);
+        }
+
+        private async Task<Pedido[]> PegaPedidosAsync()
+        {
+            return await _dataContext.Pedido.Where(FiltraPedidos()).ToArrayAsync().ConfigureAwait(false);
+        }
+
+        private async Task AtualizaPedidoAsync(Pedido pedido)
+        {
+            pedido.Situacao = (int)StatusPedido.AGUARDANDO_ENVIO;
+            pedido.DataUltimaAlteracao = DateTime.Now;
+            _dataContext.Pedido.Update(pedido);
+            await _dataContext.SaveChangesAsync().ConfigureAwait(false);
         }
 
         private Expression<Func<Pedido, bool>> FiltraPedidos()

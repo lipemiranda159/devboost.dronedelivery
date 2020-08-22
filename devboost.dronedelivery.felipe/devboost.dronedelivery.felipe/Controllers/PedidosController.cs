@@ -1,6 +1,7 @@
 ﻿using devboost.dronedelivery.felipe.DTO.Enums;
 using devboost.dronedelivery.felipe.EF.Data;
 using devboost.dronedelivery.felipe.EF.Entities;
+using devboost.dronedelivery.felipe.Facade.Interface;
 using devboost.dronedelivery.felipe.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,14 +17,20 @@ namespace devboost.dronedelivery.felipe.Controllers
     public class PedidosController : ControllerBase
     {
         private readonly DataContext _context;
-        private readonly IPedidoService _pedidoService;
-        private readonly IDroneService _droneservie;
+        private readonly IPedidoFacade _pedidoFacade;
 
-        public PedidosController(DataContext context, IPedidoService pedidoService, IDroneService droneService)
+        public PedidosController(DataContext context, IPedidoFacade pedidoFacade)
         {
             _context = context;
-            _pedidoService = pedidoService;
-            _droneservie = droneService;
+            _pedidoFacade = pedidoFacade;
+        }
+
+
+        [HttpPost("assign-drone")]
+        public async Task<ActionResult> AssignDrone()
+        {
+            await _pedidoFacade.AssignDrone();
+            return Ok();
         }
 
         // GET: api/Pedidos
@@ -85,7 +92,6 @@ namespace devboost.dronedelivery.felipe.Controllers
         [HttpPost]
         public async Task<ActionResult<Pedido>> PostPedido(Pedido pedido)
         {
-            pedido.DroneId = null;
             pedido.DataHoraInclusao = DateTime.Now;
             pedido.Situacao = (int)StatusPedido.AGUARDANDO;
             _context.Pedido.Add(pedido);

@@ -3,13 +3,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Dapper;
-using System.Data.SqlClient;
 using devboost.dronedelivery.felipe.Facade.Interface;
 using devboost.dronedelivery.felipe.DTO;
 using devboost.dronedelivery.felipe.EF.Entities;
 using devboost.dronedelivery.felipe.EF.Data;
-using devboost.dronedelivery.felipe.Services.Interfaces;
 
 namespace devboost.dronedelivery.felipe.Controllers
 {
@@ -18,22 +15,19 @@ namespace devboost.dronedelivery.felipe.Controllers
     public class DronesController : ControllerBase
     {
         private readonly DataContext _context;
-        private readonly IPedidoFacade _pedidoFacade;
-        private readonly IDroneService _droneService;
-        public DronesController(DataContext context, IPedidoFacade pedidoFacade, IDroneService droneService)
+        private readonly IDroneFacade _droneFacade;
+        public DronesController(DataContext context, IDroneFacade droneFacade)
         {
             _context = context;
-            _pedidoFacade = pedidoFacade;
-            _droneService = droneService;
+            _droneFacade = droneFacade;
         }
 
-        [HttpPost("assign-drone")]
-        public async Task<ActionResult> AssignDrone()
+
+        [HttpPost("prepare-drone")]
+        public async Task<ActionResult> PrepareDrone()
         {
-            await _pedidoFacade.AssignDrone();
             return Ok();
         }
-
 
         // GET: api/Drones
         [HttpGet]
@@ -60,9 +54,7 @@ namespace devboost.dronedelivery.felipe.Controllers
         [HttpGet("GetStatusDrone")]        
         public async Task<ActionResult<List<StatusDroneDTO>>> GetStatusDrone()
         {
-            
-
-            return Ok(await _droneService.GetDroneStatusAsync());
+            return Ok(await _droneFacade.GetDroneStatusAsync());
         }
 
         // PUT: api/Drones/5

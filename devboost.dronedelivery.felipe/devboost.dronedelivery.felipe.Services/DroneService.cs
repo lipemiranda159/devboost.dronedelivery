@@ -9,6 +9,8 @@ using Dapper;
 using devboost.dronedelivery.felipe.EF.Entities;
 using devboost.dronedelivery.felipe.EF.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using devboost.dronedelivery.felipe.DTO.Constants;
 
 namespace devboost.dronedelivery.felipe.Services
 {
@@ -33,31 +35,31 @@ namespace devboost.dronedelivery.felipe.Services
                                   ) ";
 
         private readonly DataContext _context;
+        private readonly string _connectionString;
 
-        public DroneService(DataContext context)
+        public DroneService(DataContext context, IConfiguration configuration)
         {
             _context = context;
+            _connectionString = configuration.GetConnectionString(Constants.CONNECTION_STRING_CONFIG);
         }
 
         public async Task<List<Drone>> GetAll()
         {
-            return await _context.Drone.ToListAsync();
+            return await _context.Drone.ToListAsync().ConfigureAwait(false);
         }
 
         public async Task<List<StatusDroneDTO>> GetDroneStatusAsync()
         {
-            using (SqlConnection conexao = new SqlConnection("server=localhost,11433;database=desafio-drone-db;user id=sa;password=DockerSql2017!"))
-            {
-                var resultado = await conexao.QueryAsync<StatusDroneDTO>(sqlCommand);
-                return resultado.ToList();
-            }
+            using SqlConnection conexao = new SqlConnection(_connectionString);
+            var resultado = await conexao.QueryAsync<StatusDroneDTO>(sqlCommand).ConfigureAwait(false);
+            return resultado.ToList();
         }
 
         public async Task<List<DroneStatusDTO>> GetDronesAsync()
         {
 
-            using SqlConnection conexao = new SqlConnection("server=localhost;database=desafio-drone-db;user id=sa;password=DockerSql2017!");
-            var resultado = await conexao.QueryAsync<DroneStatusDTO>(GetSqlCommand());
+            using SqlConnection conexao = new SqlConnection(_connectionString);
+            var resultado = await conexao.QueryAsync<DroneStatusDTO>(GetSqlCommand()).ConfigureAwait(false);
 
             return resultado.ToList();
         }
@@ -77,5 +79,9 @@ namespace devboost.dronedelivery.felipe.Services
             return stringBuilder.ToString();
         }
 
+        public async Task PrepareDrones()
+        {
+            
+        }
     }
 }
