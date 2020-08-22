@@ -2,22 +2,22 @@
 
 namespace devboost.dronedelivery.felipe.Migrations
 {
-    public partial class perfomancedrone : Migration
+    public partial class Distance : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<float>(
-                name: "Perfomance",
-                table: "Drone",
+            migrationBuilder.AddColumn<int>(
+                name: "Distancia",
+                table: "PedidoDrones",
                 nullable: false,
-                defaultValue: 0f);
+                defaultValue: 0);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Perfomance",
-                table: "Drone");
+                name: "Distancia",
+                table: "PedidoDrones");
         }
     }
 }

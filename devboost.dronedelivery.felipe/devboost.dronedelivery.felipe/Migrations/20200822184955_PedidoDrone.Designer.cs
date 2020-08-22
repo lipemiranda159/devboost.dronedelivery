@@ -10,8 +10,8 @@ using devboost.dronedelivery.felipe.Data;
 namespace devboost.dronedelivery.felipe.Migrations
 {
     [DbContext(typeof(grupo4devboostdronedeliveryContext))]
-    [Migration("20200822131540_initialcreate")]
-    partial class initialcreate
+    [Migration("20200822184955_PedidoDrone")]
+    partial class PedidoDrone
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,6 +37,9 @@ namespace devboost.dronedelivery.felipe.Migrations
                     b.Property<int>("Carga")
                         .HasColumnType("int");
 
+                    b.Property<float>("Perfomance")
+                        .HasColumnType("real");
+
                     b.Property<int>("Velocidade")
                         .HasColumnType("int");
 
@@ -52,13 +55,13 @@ namespace devboost.dronedelivery.felipe.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DataHoraAtualizacao")
+                    b.Property<DateTime>("DataHoraFinalizacao")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DataHoraInclusao")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DroneId")
+                    b.Property<int?>("DroneId")
                         .HasColumnType("int");
 
                     b.Property<double>("Latitude")
@@ -76,6 +79,46 @@ namespace devboost.dronedelivery.felipe.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Pedido");
+                });
+
+            modelBuilder.Entity("devboost.dronedelivery.felipe.Models.PedidoDrone", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DataHoraFinalizacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DroneId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PedidoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DroneId");
+
+                    b.HasIndex("PedidoId");
+
+                    b.ToTable("PedidoDrones");
+                });
+
+            modelBuilder.Entity("devboost.dronedelivery.felipe.Models.PedidoDrone", b =>
+                {
+                    b.HasOne("devboost.dronedelivery.felipe.Models.Drone", "Drone")
+                        .WithMany()
+                        .HasForeignKey("DroneId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("devboost.dronedelivery.felipe.Models.Pedido", "Pedido")
+                        .WithMany()
+                        .HasForeignKey("PedidoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
