@@ -24,7 +24,7 @@ namespace devboost.dronedelivery.felipe.Facade
         public async Task AssignDrone()
         {
 
-            var pedidos = await _dataContext.Pedido.Where(FiltraPedidos()).ToArrayAsync();
+            var pedidos = await _dataContext.Pedido.Where(FiltraPedidos()).ToArrayAsync().ConfigureAwait(false);
             foreach (var pedido in pedidos)
             {
                 var drone = await _pedidoService.DroneAtendePedido(pedido);
@@ -32,7 +32,7 @@ namespace devboost.dronedelivery.felipe.Facade
                 pedido.DroneId = drone.Drone.Id;
                 pedido.DataUltimaAlteracao = DateTime.Now;
                 _dataContext.Pedido.Update(pedido);
-                await _dataContext.SaveChangesAsync();
+                await _dataContext.SaveChangesAsync().ConfigureAwait(false);
             }
         }
 
