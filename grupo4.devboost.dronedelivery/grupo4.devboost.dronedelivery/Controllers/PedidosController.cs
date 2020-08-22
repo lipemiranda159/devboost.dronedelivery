@@ -1,6 +1,6 @@
-﻿using grupo4.devboost.dronedelivery.Data;
-using grupo4.devboost.dronedelivery.Models;
-using grupo4.devboost.dronedelivery.Services;
+﻿using devboost.dronedelivery.felipe.Data;
+using devboost.dronedelivery.felipe.Models;
+using devboost.dronedelivery.felipe.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace grupo4.devboost.dronedelivery.Controllers
+namespace devboost.dronedelivery.felipe.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using grupo4.devboost.dronedelivery.Data;
-using grupo4.devboost.dronedelivery.Models;
+using devboost.dronedelivery.felipe.Data;
+using devboost.dronedelivery.felipe.Models;
 using Microsoft.AspNetCore.Routing;
 using Dapper;
 using System.Data.SqlClient;
 
-namespace grupo4.devboost.dronedelivery.Controllers
+namespace devboost.dronedelivery.felipe.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

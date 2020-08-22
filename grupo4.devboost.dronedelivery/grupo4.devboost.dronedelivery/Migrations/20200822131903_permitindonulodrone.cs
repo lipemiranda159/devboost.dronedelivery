@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace grupo4.devboost.dronedelivery.Migrations
+namespace devboost.dronedelivery.felipe.Migrations
 {
     public partial class permitindonulodrone : Migration
     {
