@@ -54,10 +54,9 @@ namespace devboost.dronedelivery.felipe.Services
 
         public async Task<List<DroneStatusDTO>> GetDrones()
         {
-            var sqlCommand = GetSqlCommand();
 
             using SqlConnection conexao = new SqlConnection("server=localhost;database=desafio-drone-db;user id=sa;password=DockerSql2017!");
-            var resultado = await conexao.QueryAsync<DroneStatusDTO>(sqlCommand);
+            var resultado = await conexao.QueryAsync<DroneStatusDTO>(GetSqlCommand());
 
             return resultado.ToList();
         }
