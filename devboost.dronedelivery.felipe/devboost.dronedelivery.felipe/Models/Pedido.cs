@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace grupo4.devboost.dronedelivery.Models
+namespace devboost.dronedelivery.felipe.Models
 {
     public class Pedido
     {
