@@ -1,23 +1,23 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using grupo4.devboost.dronedelivery.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using grupo4.devboost.dronedelivery.Data;
 using grupo4.devboost.dronedelivery.Services;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
+using System.IO;
 
 namespace grupo4.devboost.dronedelivery
 {
     public class Startup
     {
+        private const string SWAGGERFILE_PATH = "./swagger/v1/swagger.json";
+        private const string API_VERSION = "v1";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -35,6 +35,7 @@ namespace grupo4.devboost.dronedelivery
 
             services.AddDbContext<grupo4devboostdronedeliveryContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("grupo4devboostdronedeliveryContext")),ServiceLifetime.Singleton);
+            AddSwagger(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +46,14 @@ namespace grupo4.devboost.dronedelivery
                 app.UseDeveloperExceptionPage();
             }
 
+            // Swagger
+            app.UseSwagger()
+               .UseSwaggerUI(c =>
+               {
+                   c.RoutePrefix = string.Empty;
+                   c.SwaggerEndpoint(SWAGGERFILE_PATH, Constants.PROJECT_NAME + API_VERSION);
+               });
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -54,5 +63,19 @@ namespace grupo4.devboost.dronedelivery
                 endpoints.MapControllers();
             });
         }
+
+        private void AddSwagger(IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc(
+                    API_VERSION,
+                    new OpenApiInfo { Title = Constants.PROJECT_NAME, Version = API_VERSION });
+                var xmlFile = Assembly.GetExecutingAssembly().GetName().Name + Constants.XML_EXTENSION;
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
+        }
+
     }
 }
