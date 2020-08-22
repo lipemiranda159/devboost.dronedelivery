@@ -3,9 +3,9 @@ using devboost.dronedelivery.felipe.Models;
 
 namespace devboost.dronedelivery.felipe.Data
 {
-    public class grupo4devboostdronedeliveryContext : DbContext
+    public class DataContext : DbContext
     {
-        public grupo4devboostdronedeliveryContext (DbContextOptions<grupo4devboostdronedeliveryContext> options)
+        public DataContext (DbContextOptions<DataContext> options)
             : base(options)
         {
         }

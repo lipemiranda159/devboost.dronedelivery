@@ -14,11 +14,11 @@ namespace devboost.dronedelivery.felipe.Controllers
     [ApiController]
     public class PedidosController : ControllerBase
     {
-        private readonly grupo4devboostdronedeliveryContext _context;
+        private readonly DataContext _context;
         private readonly IPedidoService _pedidoService;
         private readonly IDroneService _droneservie;
 
-        public PedidosController(grupo4devboostdronedeliveryContext context, IPedidoService pedidoService, IDroneService droneService)
+        public PedidosController(DataContext context, IPedidoService pedidoService, IDroneService droneService)
         {
             _context = context;
             _pedidoService = pedidoService;

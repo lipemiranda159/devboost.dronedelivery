@@ -8,7 +8,7 @@ using devboost.dronedelivery.felipe.Data;
 
 namespace devboost.dronedelivery.felipe.Migrations
 {
-    [DbContext(typeof(grupo4devboostdronedeliveryContext))]
+    [DbContext(typeof(DataContext))]
     partial class grupo4devboostdronedeliveryContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

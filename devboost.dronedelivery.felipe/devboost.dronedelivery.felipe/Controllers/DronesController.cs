@@ -14,9 +14,9 @@ namespace devboost.dronedelivery.felipe.Controllers
     [ApiController]
     public class DronesController : ControllerBase
     {
-        private readonly grupo4devboostdronedeliveryContext _context;
+        private readonly DataContext _context;
 
-        public DronesController(grupo4devboostdronedeliveryContext context)
+        public DronesController(DataContext context)
         {
             _context = context;
         }

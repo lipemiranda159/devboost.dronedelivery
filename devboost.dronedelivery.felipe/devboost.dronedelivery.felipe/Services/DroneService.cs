@@ -11,9 +11,9 @@ namespace devboost.dronedelivery.felipe.Services
 {
     public class DroneService : IDroneService
     {
-        private readonly grupo4devboostdronedeliveryContext _context;
+        private readonly DataContext _context;
 
-        public DroneService(grupo4devboostdronedeliveryContext context)
+        public DroneService(DataContext context)
         {
             _context = context;
         }

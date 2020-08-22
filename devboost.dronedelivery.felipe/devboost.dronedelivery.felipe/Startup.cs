@@ -33,7 +33,7 @@ namespace devboost.dronedelivery.felipe
             services.AddSingleton<IPedidoService, PedidoService>();
             services.AddSingleton<IDroneService, DroneService>();
 
-            services.AddDbContext<grupo4devboostdronedeliveryContext>(options =>
+            services.AddDbContext<DataContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("grupo4devboostdronedeliveryContext")),ServiceLifetime.Singleton);
         }
 

@@ -9,7 +9,7 @@ using devboost.dronedelivery.felipe.Data;
 
 namespace devboost.dronedelivery.felipe.Migrations
 {
-    [DbContext(typeof(grupo4devboostdronedeliveryContext))]
+    [DbContext(typeof(DataContext))]
     [Migration("20200822151400_nomecoluna")]
     partial class nomecoluna
     {
