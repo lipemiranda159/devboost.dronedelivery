@@ -4,8 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using devboost.dronedelivery.felipe.Data;
+using devboost.dronedelivery.felipe.EF.Data;
 
 namespace devboost.dronedelivery.felipe.Migrations
 {

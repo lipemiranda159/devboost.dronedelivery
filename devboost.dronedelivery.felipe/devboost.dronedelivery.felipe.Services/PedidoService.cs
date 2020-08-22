@@ -1,7 +1,7 @@
-﻿using devboost.dronedelivery.felipe.Models;
+﻿using devboost.dronedelivery.felipe.DTO;
+using devboost.dronedelivery.felipe.EF;
+using devboost.dronedelivery.felipe.Services.Interfaces;
 using Geolocation;
-using devboost.dronedelivery.felipe.Data;
-using devboost.dronedelivery.felipe.Models;
 using System;
 using System.Linq;
 using System.Threading.Tasks;

@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using devboost.dronedelivery.felipe.EF.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace devboost.dronedelivery.felipe.EF
+namespace devboost.dronedelivery.felipe.EF.Data
 {
     public class DataContext : DbContext
     {

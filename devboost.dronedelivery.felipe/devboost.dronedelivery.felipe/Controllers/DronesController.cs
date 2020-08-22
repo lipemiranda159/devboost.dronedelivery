@@ -3,11 +3,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using devboost.dronedelivery.felipe.Data;
-using devboost.dronedelivery.felipe.Models;
 using Dapper;
 using System.Data.SqlClient;
 using devboost.dronedelivery.felipe.Facade.Interface;
+using devboost.dronedelivery.felipe.DTO;
+using devboost.dronedelivery.felipe.EF.Entities;
+using devboost.dronedelivery.felipe.EF.Data;
 
 namespace devboost.dronedelivery.felipe.Controllers
 {
@@ -119,7 +120,7 @@ namespace devboost.dronedelivery.felipe.Controllers
         [HttpPost]
         public async Task<ActionResult<Drone>> PostDrone(Drone drone)
         {
-            drone.Perfomance = (float)(drone.Autonomia / 60.0f) * drone.Velocidade;
+            drone.Perfomance = (drone.Autonomia / 60.0f) * drone.Velocidade;
 
             _context.Drone.Add(drone);
             await _context.SaveChangesAsync();

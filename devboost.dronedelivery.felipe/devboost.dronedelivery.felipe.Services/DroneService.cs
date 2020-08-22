@@ -1,11 +1,11 @@
-﻿using devboost.dronedelivery.felipe.Models;
-using devboost.dronedelivery.felipe.Data;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using Dapper;
 using System.Text;
+using devboost.dronedelivery.felipe.DTO;
+using devboost.dronedelivery.felipe.Services.Interfaces;
+using Microsoft.Data.SqlClient;
+using Dapper;
 
 namespace devboost.dronedelivery.felipe.Services
 {

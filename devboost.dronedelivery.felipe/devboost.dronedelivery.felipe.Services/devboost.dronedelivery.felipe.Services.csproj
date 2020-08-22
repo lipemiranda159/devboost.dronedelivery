@@ -1,7 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.35" />
+    <PackageReference Include="Geolocation.NetStandard" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\devboost.dronedelivery.felipe.DTO\devboost.dronedelivery.felipe.DTO.csproj" />
+    <ProjectReference Include="..\devboost.dronedelivery.felipe.EF\devboost.dronedelivery.felipe.EF.csproj" />
+  </ItemGroup>
 
 </Project>

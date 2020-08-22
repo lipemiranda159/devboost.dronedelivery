@@ -1,6 +1,7 @@
-﻿using devboost.dronedelivery.felipe.Models;
-using devboost.dronedelivery.felipe.Data;
-using devboost.dronedelivery.felipe.Services;
+﻿using devboost.dronedelivery.felipe.DTO.Enums;
+using devboost.dronedelivery.felipe.EF.Data;
+using devboost.dronedelivery.felipe.EF.Entities;
+using devboost.dronedelivery.felipe.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -86,7 +87,7 @@ namespace devboost.dronedelivery.felipe.Controllers
         {
             pedido.DroneId = null;
             pedido.DataHoraInclusao = DateTime.Now;
-            pedido.Situacao = (int)EStatusPedido.AGUARDANDO;
+            pedido.Situacao = (int)StatusPedido.AGUARDANDO;
             _context.Pedido.Add(pedido);
             await _context.SaveChangesAsync();
 

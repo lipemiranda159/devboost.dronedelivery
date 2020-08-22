@@ -1,4 +1,4 @@
-﻿using devboost.dronedelivery.felipe.EF;
+﻿using devboost.dronedelivery.felipe.EF.Entities;
 
 namespace devboost.dronedelivery.felipe.DTO
 {
