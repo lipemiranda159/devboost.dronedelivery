@@ -1,5 +1,5 @@
 ﻿using devboost.dronedelivery.felipe.DTO;
-using devboost.dronedelivery.felipe.EF;
+using devboost.dronedelivery.felipe.EF.Entities;
 using devboost.dronedelivery.felipe.Services.Interfaces;
 using Geolocation;
 using System;
