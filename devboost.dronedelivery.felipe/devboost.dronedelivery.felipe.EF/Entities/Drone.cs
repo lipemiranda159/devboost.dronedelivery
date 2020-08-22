@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace devboost.dronedelivery.felipe.Models
+namespace devboost.dronedelivery.felipe.EF
 {
     public class Drone
     {

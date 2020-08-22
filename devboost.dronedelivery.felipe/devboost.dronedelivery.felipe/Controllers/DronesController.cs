@@ -7,6 +7,7 @@ using devboost.dronedelivery.felipe.Data;
 using devboost.dronedelivery.felipe.Models;
 using Dapper;
 using System.Data.SqlClient;
+using devboost.dronedelivery.felipe.Facade.Interface;
 
 namespace devboost.dronedelivery.felipe.Controllers
 {
@@ -15,16 +16,18 @@ namespace devboost.dronedelivery.felipe.Controllers
     public class DronesController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly IPedidoFacade _pedidoFacade;
 
-        public DronesController(DataContext context)
+        public DronesController(DataContext context, IPedidoFacade pedidoFacade)
         {
             _context = context;
+            _pedidoFacade = pedidoFacade;
         }
 
         [HttpPost("assign-drone")]
         public async Task<ActionResult> AssignDrone()
         {
-
+            await _pedidoFacade.AssignDrone();
             return Ok();
         }
 

@@ -1,4 +1,6 @@
-﻿namespace devboost.dronedelivery.felipe.Models
+﻿using devboost.dronedelivery.felipe.EF;
+
+namespace devboost.dronedelivery.felipe.DTO
 {
     public class DroneStatusDTO
     {

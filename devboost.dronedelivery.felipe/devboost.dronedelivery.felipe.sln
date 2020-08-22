@@ -5,6 +5,14 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "devboost.dronedelivery.felipe", "devboost.dronedelivery.felipe\devboost.dronedelivery.felipe.csproj", "{92688486-64C4-4D08-B1C1-2C5CF767B3E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "devboost.dronedelivery.felipe.Facade", "devboost.dronedelivery.felipe.Facade\devboost.dronedelivery.felipe.Facade.csproj", "{F10CF689-4397-46D1-871B-EFF77B4E5D25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "devboost.dronedelivery.felipe.EF", "devboost.dronedelivery.felipe.EF\devboost.dronedelivery.felipe.EF.csproj", "{627639E0-7425-47B3-9373-E92F303A57C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "devboost.dronedelivery.felipe.Services", "devboost.dronedelivery.felipe.Services\devboost.dronedelivery.felipe.Services.csproj", "{813D3E13-5073-4F61-912B-F74F4E399DFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "devboost.dronedelivery.felipe.DTO", "devboost.dronedelivery.felipe.DTO\devboost.dronedelivery.felipe.DTO.csproj", "{F7D1EF8D-7EC3-415E-BCB2-6CECC3F396D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{92688486-64C4-4D08-B1C1-2C5CF767B3E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92688486-64C4-4D08-B1C1-2C5CF767B3E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92688486-64C4-4D08-B1C1-2C5CF767B3E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F10CF689-4397-46D1-871B-EFF77B4E5D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F10CF689-4397-46D1-871B-EFF77B4E5D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F10CF689-4397-46D1-871B-EFF77B4E5D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F10CF689-4397-46D1-871B-EFF77B4E5D25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{627639E0-7425-47B3-9373-E92F303A57C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{627639E0-7425-47B3-9373-E92F303A57C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{627639E0-7425-47B3-9373-E92F303A57C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{627639E0-7425-47B3-9373-E92F303A57C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{813D3E13-5073-4F61-912B-F74F4E399DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{813D3E13-5073-4F61-912B-F74F4E399DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{813D3E13-5073-4F61-912B-F74F4E399DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{813D3E13-5073-4F61-912B-F74F4E399DFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7D1EF8D-7EC3-415E-BCB2-6CECC3F396D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7D1EF8D-7EC3-415E-BCB2-6CECC3F396D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7D1EF8D-7EC3-415E-BCB2-6CECC3F396D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7D1EF8D-7EC3-415E-BCB2-6CECC3F396D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

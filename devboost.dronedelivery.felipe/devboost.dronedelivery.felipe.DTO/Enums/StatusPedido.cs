@@ -1,6 +1,6 @@
-﻿namespace devboost.dronedelivery.felipe.Models
+﻿namespace devboost.dronedelivery.felipe.DTO.Enums
 {
-    public enum EStatusPedido
+    public enum StatusPedido
     {
         AGUARDANDO,
         AGUARDANDO_ENVIO,

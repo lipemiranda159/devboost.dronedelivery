@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace devboost.dronedelivery.felipe.Models
+﻿namespace devboost.dronedelivery.felipe.DTO
 {
     public class StatusDroneDTO
     {

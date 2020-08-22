@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace devboost.dronedelivery.felipe.Models
+namespace devboost.dronedelivery.felipe.EF
 {
     public class PedidoDrone
     {
