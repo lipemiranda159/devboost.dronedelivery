@@ -1,6 +1,6 @@
-﻿using grupo4.devboost.dronedelivery.Data;
-using grupo4.devboost.dronedelivery.Models;
-using grupo4.devboost.dronedelivery.Services;
+﻿using devboost.dronedelivery.felipe.Models;
+using devboost.dronedelivery.felipe.Data;
+using devboost.dronedelivery.felipe.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace grupo4.devboost.dronedelivery.Controllers
+namespace devboost.dronedelivery.felipe.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -16,11 +16,13 @@ namespace grupo4.devboost.dronedelivery.Controllers
     {
         private readonly grupo4devboostdronedeliveryContext _context;
         private readonly IPedidoService _pedidoService;
+        private readonly IDroneService _droneservie;
 
-        public PedidosController(grupo4devboostdronedeliveryContext context, IPedidoService pedidoService)
+        public PedidosController(grupo4devboostdronedeliveryContext context, IPedidoService pedidoService, IDroneService droneService)
         {
             _context = context;
             _pedidoService = pedidoService;
+            _droneservie = droneService;
         }
 
         // GET: api/Pedidos
@@ -84,27 +86,7 @@ namespace grupo4.devboost.dronedelivery.Controllers
         {
             pedido.DroneId = null;
             pedido.DataHoraInclusao = DateTime.Now;
-
-            DroneDTO droneDTO = await _pedidoService.DroneAtendePedido(pedido);
-
-            if (droneDTO != null)
-            {
-                pedido.DroneId = droneDTO.Drone.Id;
-                pedido.Situacao = (int)EStatusPedido.DRONE_ASSOCIADO;
-
-                var calculo = (droneDTO.Distancia / droneDTO.Drone.Velocidade);
-
-                /*
-                A cada pedido que o drone atende, vamos assumir como regra que ele sempre deve voltar para base,
-                independente se ainda tem autonomia disponivel. Neste caso, estamos considerando no tempo de
-                finalizacao + 1 para considerar o tempo de carga da bateria
-                */
-                pedido.DataHoraFinalizacao = DateTime.Now.AddHours((calculo +1));
-            }
-            else { 
-                pedido.Situacao = (int)EStatusPedido.RECUSADO;
-                pedido.DataHoraFinalizacao = DateTime.Now;
-            }
+            pedido.Situacao = (int)EStatusPedido.AGUARDANDO;
             _context.Pedido.Add(pedido);
             await _context.SaveChangesAsync();
 

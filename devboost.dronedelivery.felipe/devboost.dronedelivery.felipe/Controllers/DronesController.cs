@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using grupo4.devboost.dronedelivery.Data;
-using grupo4.devboost.dronedelivery.Models;
-using Microsoft.AspNetCore.Routing;
+using devboost.dronedelivery.felipe.Data;
+using devboost.dronedelivery.felipe.Models;
 using Dapper;
 using System.Data.SqlClient;
 
-namespace grupo4.devboost.dronedelivery.Controllers
+namespace devboost.dronedelivery.felipe.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -23,6 +20,14 @@ namespace grupo4.devboost.dronedelivery.Controllers
         {
             _context = context;
         }
+
+        [HttpPost("assign-drone")]
+        public async Task<ActionResult> AssignDrone()
+        {
+
+            return Ok();
+        }
+
 
         // GET: api/Drones
         [HttpGet]
@@ -49,7 +54,7 @@ namespace grupo4.devboost.dronedelivery.Controllers
         [HttpGet("GetStatusDrone")]        
         public async Task<ActionResult<List<StatusDroneDTO>>> GetStatusDrone()
         {
-            string sqlCommand = @"select a.DroneId,
+            var sqlCommand = @"select a.DroneId,
                                          0 as Situacao,
                                          a.Id as PedidoId 
                                   from pedido a
@@ -67,8 +72,7 @@ namespace grupo4.devboost.dronedelivery.Controllers
                                   and a.DataHoraFinalizacao > dateadd(hour,-3,CURRENT_TIMESTAMP)
                                   ) ";
 
-            using SqlConnection conexao = new SqlConnection("server=localhost;database=desafio-drone-db;user id=sa;password=minha@password");
-
+            using SqlConnection conexao = new SqlConnection("server=localhost,11433;database=desafio-drone-db;user id=sa;password=DockerSql2017!");
             var resultado = await conexao.QueryAsync<StatusDroneDTO>(sqlCommand);
 
             return Ok(resultado);
