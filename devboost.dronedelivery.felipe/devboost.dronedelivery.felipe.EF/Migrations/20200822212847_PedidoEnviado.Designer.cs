@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using devboost.dronedelivery.felipe.EF.Data;
 
 namespace devboost.dronedelivery.felipe.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class grupo4devboostdronedeliveryContextModelSnapshot : ModelSnapshot
+    [Migration("20200822212847_PedidoEnviado")]
+    partial class PedidoEnviado
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,9 +61,6 @@ namespace devboost.dronedelivery.felipe.Migrations
                     b.Property<DateTime>("DataHoraInclusao")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DataUltimaAlteracao")
-                        .HasColumnType("datetime2");
-
                     b.Property<int?>("DroneId")
                         .HasColumnType("int");
 
@@ -98,10 +97,10 @@ namespace devboost.dronedelivery.felipe.Migrations
                     b.Property<int>("DroneId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PedidoId")
-                        .HasColumnType("int");
+                    b.Property<bool>("PedidoEnviado")
+                        .HasColumnType("bit");
 
-                    b.Property<int>("StatusEnvio")
+                    b.Property<int>("PedidoId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

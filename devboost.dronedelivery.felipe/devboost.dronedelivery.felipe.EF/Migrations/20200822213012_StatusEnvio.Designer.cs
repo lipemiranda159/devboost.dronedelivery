@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using devboost.dronedelivery.felipe.EF.Data;
 
 namespace devboost.dronedelivery.felipe.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class grupo4devboostdronedeliveryContextModelSnapshot : ModelSnapshot
+    [Migration("20200822213012_StatusEnvio")]
+    partial class StatusEnvio
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,9 +59,6 @@ namespace devboost.dronedelivery.felipe.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DataHoraInclusao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataUltimaAlteracao")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("DroneId")

@@ -1,5 +1,7 @@
 ﻿using devboost.dronedelivery.felipe.EF.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace devboost.dronedelivery.felipe.EF.Data
 {
@@ -15,5 +17,18 @@ namespace devboost.dronedelivery.felipe.EF.Data
         public DbSet<Drone> Drone { get; set; }
 
         public DbSet<PedidoDrone> PedidoDrones { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json")
+            .Build();
+            var connectionString = configuration.GetConnectionString("grupo4devboostdronedeliveryContext");
+
+            optionsBuilder
+                .UseSqlServer(connectionString);
+        }
+
     }
 }

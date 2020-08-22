@@ -13,6 +13,7 @@ namespace devboost.dronedelivery.felipe.EF.Entities
         public double Longitude { get; set; }
         public DateTime DataHoraInclusao { get; set; }
         public int Situacao { get; set; }
+        public DateTime DataUltimaAlteracao { get; set; }
         public DateTime DataHoraFinalizacao { get; set; }
     }
 }

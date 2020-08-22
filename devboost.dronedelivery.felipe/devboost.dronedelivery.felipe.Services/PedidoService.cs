@@ -34,7 +34,7 @@ namespace devboost.dronedelivery.felipe.Services
 
         }
 
-        private static Func<Drone, bool> PodeSerSuportado(Pedido pedido, double distance)
+        private Func<Drone, bool> PodeSerSuportado(Pedido pedido, double distance)
         {
             return d => d.Perfomance >= distance && d.Capacidade >= pedido.Peso;
         }
