@@ -1,4 +1,6 @@
-﻿namespace grupo4.devboost.dronedelivery.Models
+﻿using devboost.dronedelivery.felipe.Models;
+
+namespace devboost.dronedelivery.felipe.Models
 {
     public class DroneDTO
     {

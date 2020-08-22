@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace devboost.dronedelivery.felipe.Models
 {
@@ -9,7 +6,10 @@ namespace devboost.dronedelivery.felipe.Models
     {
         public int Id { get; set; }
         public int DroneId { get; set; }
+        public Drone Drone { get; set; }
         public int PedidoId { get; set; }
+        public Pedido Pedido { get; set; }
+        public int Distancia { get; set; }
         public DateTime DataHoraFinalizacao { get; set; }
     }
 }

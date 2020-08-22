@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "grupo4.devboost.dronedelivery": {
+    "devboost.dronedelivery.felipe": {
       "commandName": "Project",
       "launchBrowser": false,
       "applicationUrl": "http://localhost:5000",
