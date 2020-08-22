@@ -8,6 +8,7 @@ using Microsoft.Data.SqlClient;
 using Dapper;
 using devboost.dronedelivery.felipe.EF.Entities;
 using devboost.dronedelivery.felipe.EF.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace devboost.dronedelivery.felipe.Services
 {
@@ -40,10 +41,10 @@ namespace devboost.dronedelivery.felipe.Services
 
         public async Task<List<Drone>> GetAll()
         {
-            return _context.Drone.ToList();
+            return await _context.Drone.ToListAsync();
         }
 
-        public async Task<List<StatusDroneDTO>> GetDroneStatus()
+        public async Task<List<StatusDroneDTO>> GetDroneStatusAsync()
         {
             using (SqlConnection conexao = new SqlConnection("server=localhost,11433;database=desafio-drone-db;user id=sa;password=DockerSql2017!"))
             {
@@ -52,7 +53,7 @@ namespace devboost.dronedelivery.felipe.Services
             }
         }
 
-        public async Task<List<DroneStatusDTO>> GetDrones()
+        public async Task<List<DroneStatusDTO>> GetDronesAsync()
         {
 
             using SqlConnection conexao = new SqlConnection("server=localhost;database=desafio-drone-db;user id=sa;password=DockerSql2017!");

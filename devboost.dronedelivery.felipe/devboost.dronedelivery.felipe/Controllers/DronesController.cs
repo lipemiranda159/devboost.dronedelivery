@@ -62,7 +62,7 @@ namespace devboost.dronedelivery.felipe.Controllers
         {
             
 
-            return Ok(await _droneService.GetDroneStatus());
+            return Ok(await _droneService.GetDroneStatusAsync());
         }
 
         // PUT: api/Drones/5
