@@ -6,6 +6,7 @@ using devboost.dronedelivery.felipe.EF.Entities;
 using devboost.dronedelivery.felipe.DTO.Enums;
 using devboost.dronedelivery.felipe.DTO.Extensions;
 using devboost.dronedelivery.felipe.DTO.Repositories.Interfaces;
+using System.Collections.Generic;
 
 namespace devboost.dronedelivery.felipe.Services
 {
@@ -69,6 +70,10 @@ namespace devboost.dronedelivery.felipe.Services
             }
         }
 
+        public async Task<List<StatusDroneDto>> GetDroneStatusAsync()
+        {
+            return await _droneRepository.GetDroneStatusAsync();
+        }
 
         private async Task FinalizaPedidosAsync()
         {

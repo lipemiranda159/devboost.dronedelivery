@@ -1,6 +1,5 @@
 ﻿using devboost.dronedelivery.felipe.DTO.Enums;
 using devboost.dronedelivery.felipe.DTO.Repositories.Interfaces;
-using devboost.dronedelivery.felipe.EF.Data;
 using devboost.dronedelivery.felipe.EF.Entities;
 using devboost.dronedelivery.felipe.Facade.Interface;
 using Microsoft.AspNetCore.Mvc;

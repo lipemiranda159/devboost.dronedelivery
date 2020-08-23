@@ -18,9 +18,5 @@ namespace devboost.dronedelivery.felipe.Facade
             return await _droneService.GetDroneStatusAsync().ConfigureAwait(false);
         }
 
-        public async Task PreprareDroneAsync()
-        {
-            await _droneService.PrepareDrones();
-        }
     }
 }
