@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using grupo4.devboost.dronedelivery.Data;
+using devboost.dronedelivery.felipe.Data;
 
-namespace grupo4.devboost.dronedelivery.Migrations
+namespace devboost.dronedelivery.felipe.Migrations
 {
     [DbContext(typeof(grupo4devboostdronedeliveryContext))]
-    partial class grupo4devboostdronedeliveryContextModelSnapshot : ModelSnapshot
+    [Migration("20200822135805_perfomancedrone")]
+    partial class perfomancedrone
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,7 +21,7 @@ namespace grupo4.devboost.dronedelivery.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("grupo4.devboost.dronedelivery.Models.Drone", b =>
+            modelBuilder.Entity("devboost.dronedelivery.felipe.Models.Drone", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -46,14 +48,14 @@ namespace grupo4.devboost.dronedelivery.Migrations
                     b.ToTable("Drone");
                 });
 
-            modelBuilder.Entity("grupo4.devboost.dronedelivery.Models.Pedido", b =>
+            modelBuilder.Entity("devboost.dronedelivery.felipe.Models.Pedido", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DataHoraFinalizacao")
+                    b.Property<DateTime>("DataHoraAtualizacao")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DataHoraInclusao")

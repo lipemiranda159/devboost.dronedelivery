@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using grupo4.devboost.dronedelivery.Data;
+using devboost.dronedelivery.felipe.Data;
 
-namespace grupo4.devboost.dronedelivery.Migrations
+namespace devboost.dronedelivery.felipe.Migrations
 {
     [DbContext(typeof(grupo4devboostdronedeliveryContext))]
-    [Migration("20200822131903_permitindonulodrone")]
-    partial class permitindonulodrone
+    [Migration("20200822151400_nomecoluna")]
+    partial class nomecoluna
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace grupo4.devboost.dronedelivery.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("grupo4.devboost.dronedelivery.Models.Drone", b =>
+            modelBuilder.Entity("devboost.dronedelivery.felipe.Models.Drone", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -37,6 +37,9 @@ namespace grupo4.devboost.dronedelivery.Migrations
                     b.Property<int>("Carga")
                         .HasColumnType("int");
 
+                    b.Property<float>("Perfomance")
+                        .HasColumnType("real");
+
                     b.Property<int>("Velocidade")
                         .HasColumnType("int");
 
@@ -45,14 +48,14 @@ namespace grupo4.devboost.dronedelivery.Migrations
                     b.ToTable("Drone");
                 });
 
-            modelBuilder.Entity("grupo4.devboost.dronedelivery.Models.Pedido", b =>
+            modelBuilder.Entity("devboost.dronedelivery.felipe.Models.Pedido", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DataHoraAtualizacao")
+                    b.Property<DateTime>("DataHoraFinalizacao")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DataHoraInclusao")

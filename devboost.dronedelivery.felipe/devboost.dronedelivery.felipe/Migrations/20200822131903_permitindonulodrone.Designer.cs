@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using grupo4.devboost.dronedelivery.Data;
+using devboost.dronedelivery.felipe.Data;
 
-namespace grupo4.devboost.dronedelivery.Migrations
+namespace devboost.dronedelivery.felipe.Migrations
 {
     [DbContext(typeof(grupo4devboostdronedeliveryContext))]
-    [Migration("20200822131540_initialcreate")]
-    partial class initialcreate
+    [Migration("20200822131903_permitindonulodrone")]
+    partial class permitindonulodrone
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace grupo4.devboost.dronedelivery.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("grupo4.devboost.dronedelivery.Models.Drone", b =>
+            modelBuilder.Entity("devboost.dronedelivery.felipe.Models.Drone", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -45,7 +45,7 @@ namespace grupo4.devboost.dronedelivery.Migrations
                     b.ToTable("Drone");
                 });
 
-            modelBuilder.Entity("grupo4.devboost.dronedelivery.Models.Pedido", b =>
+            modelBuilder.Entity("devboost.dronedelivery.felipe.Models.Pedido", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -58,7 +58,7 @@ namespace grupo4.devboost.dronedelivery.Migrations
                     b.Property<DateTime>("DataHoraInclusao")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DroneId")
+                    b.Property<int?>("DroneId")
                         .HasColumnType("int");
 
                     b.Property<double>("Latitude")

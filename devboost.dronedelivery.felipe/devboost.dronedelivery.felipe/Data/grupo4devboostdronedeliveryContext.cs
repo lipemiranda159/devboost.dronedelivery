@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using grupo4.devboost.dronedelivery.Models;
+using devboost.dronedelivery.felipe.Models;
 
-namespace grupo4.devboost.dronedelivery.Data
+namespace devboost.dronedelivery.felipe.Data
 {
     public class grupo4devboostdronedeliveryContext : DbContext
     {
@@ -14,8 +14,8 @@ namespace grupo4.devboost.dronedelivery.Data
         {
         }
 
-        public DbSet<grupo4.devboost.dronedelivery.Models.Pedido> Pedido { get; set; }
+        public DbSet<devboost.dronedelivery.felipe.Models.Pedido> Pedido { get; set; }
 
-        public DbSet<grupo4.devboost.dronedelivery.Models.Drone> Drone { get; set; }
+        public DbSet<devboost.dronedelivery.felipe.Models.Drone> Drone { get; set; }
     }
 }
