@@ -33,7 +33,7 @@ namespace devboost.dronedelivery.felipe.Facade
             }
         }
 
-        private async Task AdicionarPedidoDrone(Pedido pedido, DTO.DroneDTO drone)
+        private async Task AdicionarPedidoDrone(Pedido pedido, DTO.DroneDto drone)
         {
             var pedidoDrone = new PedidoDrone()
             {

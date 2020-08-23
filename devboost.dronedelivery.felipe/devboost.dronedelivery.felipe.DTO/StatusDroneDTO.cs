@@ -1,6 +1,6 @@
 ﻿namespace devboost.dronedelivery.felipe.DTO
 {
-    public class StatusDroneDTO
+    public sealed class StatusDroneDto
     {
         public int DroneId { get; set; }
         public bool Situacao { get; set; }

@@ -1,4 +1,5 @@
 ﻿using devboost.dronedelivery.felipe.DTO.Enums;
+using devboost.dronedelivery.felipe.DTO.Repositories.Interfaces;
 using devboost.dronedelivery.felipe.EF.Data;
 using devboost.dronedelivery.felipe.EF.Entities;
 using devboost.dronedelivery.felipe.Facade.Interface;
@@ -8,20 +9,27 @@ using System.Threading.Tasks;
 
 namespace devboost.dronedelivery.felipe.Controllers
 {
+    /// <summary>
+    /// Controller com as operações dos pedidos
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class PedidosController : ControllerBase
     {
-        private readonly DataContext _context;
         private readonly IPedidoFacade _pedidoFacade;
-
-        public PedidosController(DataContext context, IPedidoFacade pedidoFacade)
+        private readonly IPedidoRepository _pedidoRepository;
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+        public PedidosController(IPedidoRepository pedidoRepository, IPedidoFacade pedidoFacade)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
-            _context = context;
             _pedidoFacade = pedidoFacade;
+            _pedidoRepository = pedidoRepository;
         }
 
-
+        /// <summary>
+        /// Percorre lista de pedidos em espera adicionando um drone para os mesmos
+        /// </summary>
+        /// <returns></returns>
         [HttpPost("assign-drone")]
         public async Task<ActionResult> AssignDrone()
         {
@@ -30,20 +38,21 @@ namespace devboost.dronedelivery.felipe.Controllers
         }
 
 
-        // POST: api/Pedidos
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        /// <summary>
+        /// Adiciona um novo pedido
+        /// </summary>
+        /// <param name="pedido"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<Pedido>> PostPedido(Pedido pedido)
         {
             pedido.DataHoraInclusao = DateTime.Now;
             pedido.Situacao = (int)StatusPedido.AGUARDANDO;
-            _context.Pedido.Add(pedido);
-            await _context.SaveChangesAsync();
+            await _pedidoRepository.SavePedidoAsync(pedido);
 
             return CreatedAtAction("GetPedido", new { id = pedido.Id }, pedido);
         }
 
-
+        
     }
 }

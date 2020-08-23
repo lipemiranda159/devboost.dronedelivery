@@ -2,9 +2,9 @@
 
 namespace devboost.dronedelivery.felipe.DTO
 {
-    public class DroneStatusDTO
+    public sealed class DroneStatusDto
     {
-        public DroneStatusDTO(Drone drone)
+        public DroneStatusDto(Drone drone)
         {
             Drone = drone;
             SomaPeso = default;
