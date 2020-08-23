@@ -29,64 +29,12 @@ namespace devboost.dronedelivery.felipe.Controllers
             return Ok();
         }
 
-        // GET: api/Drones
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Drone>>> GetDrone()
-        {
-            return await _context.Drone.ToListAsync();
-        }
-
-        // GET: api/Drones/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Drone>> GetDrone(int id)
-        {
-            var drone = await _context.Drone.FindAsync(id);
-
-            if (drone == null)
-            {
-                return NotFound();
-            }
-
-            return drone;
-        }
 
         // GET: api/Drones/5
         [HttpGet("GetStatusDrone")]        
         public async Task<ActionResult<List<StatusDroneDTO>>> GetStatusDrone()
         {
             return Ok(await _droneFacade.GetDroneStatusAsync());
-        }
-
-        // PUT: api/Drones/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutDrone(int id, Drone drone)
-        {
-            if (id != drone.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(drone).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!DroneExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
         }
 
         // POST: api/Drones
@@ -103,25 +51,5 @@ namespace devboost.dronedelivery.felipe.Controllers
             return CreatedAtAction("GetDrone", new { id = drone.Id }, drone);
         }
 
-        // DELETE: api/Drones/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Drone>> DeleteDrone(int id)
-        {
-            var drone = await _context.Drone.FindAsync(id);
-            if (drone == null)
-            {
-                return NotFound();
-            }
-
-            _context.Drone.Remove(drone);
-            await _context.SaveChangesAsync();
-
-            return drone;
-        }
-
-        private bool DroneExists(int id)
-        {
-            return _context.Drone.Any(e => e.Id == id);
-        }
     }
 }

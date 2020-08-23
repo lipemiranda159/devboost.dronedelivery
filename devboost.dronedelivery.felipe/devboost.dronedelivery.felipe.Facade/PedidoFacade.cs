@@ -38,8 +38,8 @@ namespace devboost.dronedelivery.felipe.Facade
             var pedidoDrone = new PedidoDrone()
             {
                 Distancia = drone.Distancia,
-                Drone = drone.Drone,
-                DroneId = drone.Drone.Id,
+                Drone = drone.DroneStatus.Drone,
+                DroneId = drone.DroneStatus.Drone.Id,
                 Pedido = pedido,
                 PedidoId = pedido.Id,
                 StatusEnvio = (int)StatusEnvio.AGUARDANDO
