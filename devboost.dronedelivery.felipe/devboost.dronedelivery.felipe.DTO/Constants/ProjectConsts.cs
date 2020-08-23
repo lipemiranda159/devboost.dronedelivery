@@ -1,6 +1,6 @@
 ﻿namespace devboost.dronedelivery.felipe.DTO.Constants
 {
-    public class ProjectConsts
+    public static class ProjectConsts
     {
         public const string XML_EXTENSION = ".xml";
         public const string PROJECT_NAME = "Delivery Drone";
