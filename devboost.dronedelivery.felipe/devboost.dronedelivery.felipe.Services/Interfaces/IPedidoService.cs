@@ -6,6 +6,6 @@ namespace devboost.dronedelivery.felipe.Services.Interfaces
 {
     public interface IPedidoService
     {
-        Task<DroneDTO> DroneAtendePedido(Pedido pedido);
+        Task<DroneDto> DroneAtendePedido(Pedido pedido);
     }
 }

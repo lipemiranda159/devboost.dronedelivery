@@ -6,8 +6,8 @@ namespace devboost.dronedelivery.felipe.Facade.Interface
 {
     public interface IDroneFacade
     {
-        Task<List<StatusDroneDTO>> GetDroneStatusAsync();
-        Task PreprareDroneAsync();
+        Task<List<StatusDroneDto>> GetDroneStatusAsync();
+
 
     }
 }

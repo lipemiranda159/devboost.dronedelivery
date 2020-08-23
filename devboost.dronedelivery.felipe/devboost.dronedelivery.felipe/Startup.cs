@@ -14,6 +14,8 @@ using System;
 using devboost.dronedelivery.felipe.DTO.Constants;
 using devboost.dronedelivery.felipe.Facade.Interface;
 using devboost.dronedelivery.felipe.Facade;
+using devboost.dronedelivery.felipe.DTO.Repositories.Interfaces;
+using devboost.dronedelivery.felipe.DTO.Repositories;
 
 namespace devboost.dronedelivery.felipe
 {
@@ -35,15 +37,16 @@ namespace devboost.dronedelivery.felipe
         {
             services.AddControllers();
 
+            services.AddSingleton<IDroneRepository, DroneRepository>();
+            services.AddSingleton<IPedidoDroneRepository, PedidoDroneRepository>();
             services.AddSingleton<IPedidoService, PedidoService>();
             services.AddSingleton<IDroneService, DroneService>();
             services.AddSingleton<ICoordinateService, CoordinateService>();
             services.AddSingleton<IPedidoFacade, PedidoFacade>();
             services.AddSingleton<IDroneFacade, DroneFacade>();
 
-
             services.AddDbContext<DataContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("grupo4devboostdronedeliveryContext")),ServiceLifetime.Singleton);
+                    options.UseSqlServer(Configuration.GetConnectionString(ProjectConsts.CONNECTION_STRING_CONFIG)), ServiceLifetime.Singleton);
             AddSwagger(services);
         }
 
@@ -52,8 +55,8 @@ namespace devboost.dronedelivery.felipe
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc(API_VERSION, new OpenApiInfo { Title = Constants.PROJECT_NAME, Version = API_VERSION });
-                var xmlFile = Assembly.GetExecutingAssembly().GetName().Name + Constants.XML_EXTENSION;
+                c.SwaggerDoc(API_VERSION, new OpenApiInfo { Title = ProjectConsts.PROJECT_NAME, Version = API_VERSION });
+                var xmlFile = Assembly.GetExecutingAssembly().GetName().Name + ProjectConsts.XML_EXTENSION;
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
@@ -72,7 +75,7 @@ namespace devboost.dronedelivery.felipe
                .UseSwaggerUI(c =>
                {
                    c.RoutePrefix = string.Empty;
-                   c.SwaggerEndpoint(SWAGGERFILE_PATH, Constants.PROJECT_NAME + API_VERSION);
+                   c.SwaggerEndpoint(SWAGGERFILE_PATH, ProjectConsts.PROJECT_NAME + API_VERSION);
                });
 
             app.UseRouting();

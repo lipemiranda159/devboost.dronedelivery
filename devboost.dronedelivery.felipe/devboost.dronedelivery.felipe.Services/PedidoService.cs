@@ -16,7 +16,7 @@ namespace devboost.dronedelivery.felipe.Services
             _coordinateService = coordinateService;
         }
 
-        public async Task<DroneDTO> DroneAtendePedido(Pedido pedido)
+        public async Task<DroneDto> DroneAtendePedido(Pedido pedido)
         {
             var originPoint = new Point();
 
@@ -27,7 +27,7 @@ namespace devboost.dronedelivery.felipe.Services
             if (drone == null)
                 return null;
 
-            return new DroneDTO(drone, distance);
+            return new DroneDto(drone, distance);
 
         }
 

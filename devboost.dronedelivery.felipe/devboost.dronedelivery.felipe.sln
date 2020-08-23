@@ -5,13 +5,18 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "devboost.dronedelivery.felipe", "devboost.dronedelivery.felipe\devboost.dronedelivery.felipe.csproj", "{92688486-64C4-4D08-B1C1-2C5CF767B3E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "devboost.dronedelivery.felipe.Facade", "devboost.dronedelivery.felipe.Facade\devboost.dronedelivery.felipe.Facade.csproj", "{F10CF689-4397-46D1-871B-EFF77B4E5D25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "devboost.dronedelivery.felipe.Facade", "devboost.dronedelivery.felipe.Facade\devboost.dronedelivery.felipe.Facade.csproj", "{F10CF689-4397-46D1-871B-EFF77B4E5D25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "devboost.dronedelivery.felipe.EF", "devboost.dronedelivery.felipe.EF\devboost.dronedelivery.felipe.EF.csproj", "{627639E0-7425-47B3-9373-E92F303A57C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "devboost.dronedelivery.felipe.EF", "devboost.dronedelivery.felipe.EF\devboost.dronedelivery.felipe.EF.csproj", "{627639E0-7425-47B3-9373-E92F303A57C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "devboost.dronedelivery.felipe.Services", "devboost.dronedelivery.felipe.Services\devboost.dronedelivery.felipe.Services.csproj", "{813D3E13-5073-4F61-912B-F74F4E399DFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "devboost.dronedelivery.felipe.Services", "devboost.dronedelivery.felipe.Services\devboost.dronedelivery.felipe.Services.csproj", "{813D3E13-5073-4F61-912B-F74F4E399DFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "devboost.dronedelivery.felipe.DTO", "devboost.dronedelivery.felipe.DTO\devboost.dronedelivery.felipe.DTO.csproj", "{F7D1EF8D-7EC3-415E-BCB2-6CECC3F396D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "devboost.dronedelivery.felipe.DTO", "devboost.dronedelivery.felipe.DTO\devboost.dronedelivery.felipe.DTO.csproj", "{F7D1EF8D-7EC3-415E-BCB2-6CECC3F396D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AFB85C61-2749-4D73-AE2A-A1C0D2014D27}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
