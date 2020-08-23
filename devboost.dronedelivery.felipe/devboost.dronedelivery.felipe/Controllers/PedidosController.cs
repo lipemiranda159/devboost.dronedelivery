@@ -2,12 +2,8 @@
 using devboost.dronedelivery.felipe.EF.Data;
 using devboost.dronedelivery.felipe.EF.Entities;
 using devboost.dronedelivery.felipe.Facade.Interface;
-using devboost.dronedelivery.felipe.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace devboost.dronedelivery.felipe.Controllers
