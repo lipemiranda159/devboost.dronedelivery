@@ -2,7 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.35" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\devboost.dronedelivery.felipe.EF\devboost.dronedelivery.felipe.EF.csproj" />

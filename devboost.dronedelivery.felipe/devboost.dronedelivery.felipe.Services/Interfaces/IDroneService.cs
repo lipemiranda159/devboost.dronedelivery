@@ -7,9 +7,8 @@ namespace devboost.dronedelivery.felipe.Services.Interfaces
 {
     public interface IDroneService
     {
-        Task<List<Drone>> GetAll();
-        Task<List<StatusDroneDTO>> GetDroneStatusAsync();
-        Task<DroneStatusDTO> GetAvailiableDroneAsync(double distance, Pedido pedido);
-        Task PrepareDrones();
+        Task<DroneStatusDto> GetAvailiableDroneAsync(double distance, Pedido pedido);
+        Task<List<StatusDroneDto>> GetDroneStatusAsync();
+
     }
 }
